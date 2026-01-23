@@ -1,0 +1,9 @@
+﻿<Application x:Class="teste_tecnico_benner.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:teste_tecnico_benner"
+             StartupUri="Views/CadastrarPessoa.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
