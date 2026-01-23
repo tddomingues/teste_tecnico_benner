@@ -8,7 +8,7 @@
         Title="CadastrarProduto" Height="450" Width="800">
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock Text="CADASTRO DE PRODUTOS" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBlock Text="Cadastro de Produto" FontWeight="Bold" Margin="0,0,0,10"/>
 
             <TextBlock Text="Nome do Produto:"/>
             <TextBox x:Name="txtNomeProduto" Margin="0,0,5,10"/>
@@ -19,9 +19,9 @@
             <TextBlock Text="Valor (R$):"/>
             <TextBox x:Name="txtValor" Margin="0,0,5,10"/>
 
-            <Button Content="SALVAR PRODUTO" Click="BtnSalvarProduto_Click" Height="30" Margin="0,0,0,5"/>
+            <Button Content="Salvar Produto" Click="BtnSalvarProduto" Height="30" Margin="0,0,0,5"/>
 
-            <Button Content="EXCLUIR SELECIONADO" Click="BtnExcluir_Click" Height="30" Background="LightCoral" Margin="0,0,0,20"/>
+            <Button Content="Excluir Produto" Click="BtnExcluir" Height="30" Background="LightCoral" Margin="0,0,0,20"/>
 
             <TextBlock Text="Produtos em Estoque:" Margin="0,0,0,5"/>
             <DataGrid x:Name="dgProdutos" Height="200" AutoGenerateColumns="True" SelectionMode="Single"/>

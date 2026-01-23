@@ -36,7 +36,7 @@ namespace teste_tecnico_benner.Views
             dgPessoas.ItemsSource = listaPessoas;
         }
 
-        private void BtnSalvar_Click(object sender, RoutedEventArgs e)
+        private void BtnSalvar(object sender, RoutedEventArgs e)
         {
             Pessoa novaPessoa = new Pessoa();
 

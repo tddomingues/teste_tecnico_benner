@@ -36,7 +36,7 @@ namespace teste_tecnico_benner.Views
             dgPedidos.ItemsSource = lista; 
         }
 
-        private void BtnSalvar_Click(object sender, RoutedEventArgs e)
+        private void BtnSalvar(object sender, RoutedEventArgs e)
         {
             Pedido p = new Pedido();
 

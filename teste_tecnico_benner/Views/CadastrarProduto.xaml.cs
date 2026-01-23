@@ -36,7 +36,7 @@ namespace teste_tecnico_benner.Views
             dgProdutos.ItemsSource = listaProdutos;
         }
 
-        private void BtnSalvarProduto_Click(object sender, RoutedEventArgs e)
+        private void BtnSalvarProduto(object sender, RoutedEventArgs e)
         {
             Produto novo = new Produto();
 
@@ -47,7 +47,7 @@ namespace teste_tecnico_benner.Views
             novo.Nome = txtNomeProduto.Text;
             novo.Codigo = txtCodigo.Text;
 
-            novo.Valor = Convert.ToDecimal(txtValor.Text);
+            novo.Valor = int.Parse(txtValor.Text);
 
             // Adiciona na lista e manda o banco salvar o arquivo JSON
             listaProdutos.Add(novo);
@@ -62,7 +62,7 @@ namespace teste_tecnico_benner.Views
             MessageBox.Show("Produto Salvo com Sucesso!");
         }
 
-        private void BtnExcluir_Click(object sender, RoutedEventArgs e)
+        private void BtnExcluir(object sender, RoutedEventArgs e)
         {
             // seleciona o produto que o usuário está clicado
             Produto produtoSelecionado = (Produto)dgProdutos.SelectedItem;

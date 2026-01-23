@@ -8,7 +8,7 @@
         Title="CadastrarPessoa" Height="450" Width="800">
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock Text="CADASTRO DE CLIENTES"  Margin="0,0,0,10"/>
+            <TextBlock Text="Cadastro de Clientes"  Margin="0,0,0,10"/>
 
             <TextBlock Text="Nome:"/>
             <TextBox x:Name="txtNome" Margin="0,0,5,10"/>
@@ -19,9 +19,9 @@
             <TextBlock Text="Endereço:"/>
             <TextBox x:Name="txtEndereco" Margin="0,0,5,10"/>
 
-            <Button Content="SALVAR DADOS" Click="BtnSalvar_Click" Height="30" Margin="0,0,0,20"/>
+            <Button Content="Salvar Dados" Click="BtnSalvar" Height="30" Margin="0,0,0,20"/>
 
-            <TextBlock Text="Lista de Pessoas:" Margin="0,0,0,5"/>
+            <TextBlock Text="Lista:" Margin="0,0,0,5"/>
             <DataGrid x:Name="dgPessoas" Height="200" AutoGenerateColumns="True"/>
         </StackPanel>
     </Grid>
