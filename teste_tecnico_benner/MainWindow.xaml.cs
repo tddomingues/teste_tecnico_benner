@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using teste_tecnico_benner.Views;
 
 namespace teste_tecnico_benner
 {
@@ -23,6 +24,24 @@ namespace teste_tecnico_benner
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BtnTelaProduto(object sender, RoutedEventArgs e)
+        {
+            var tela = new CadastrarProduto();
+            tela.Show();
+        }
+
+        private void BtnTelaPessoa(object sender, RoutedEventArgs e)
+        {
+            var tela = new CadastrarPessoa();
+            tela.Show();
+        }
+
+        private void BtnTelaPedido(object sender, RoutedEventArgs e)
+        {
+            var tela = new CadastrarPedido();
+            tela.Show();
         }
     }
 }

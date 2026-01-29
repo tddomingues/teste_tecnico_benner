@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="250">
+            <TextBlock Text="Tela Principal - Navegue" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <Button Content="Tela Produtos" Click="BtnTelaProduto" Height="40" Margin="5"/>
+            <Button Content="Tela Pessoa" Click="BtnTelaPessoa" Height="40" Margin="5"/>
+            <Button Content="Tela Pedido" Click="BtnTelaPedido" Height="40" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Window>
