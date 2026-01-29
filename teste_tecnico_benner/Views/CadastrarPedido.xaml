@@ -2,26 +2,30 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="CadastrarPedido" Height="550" Width="400">
-    <Grid>
-        <StackPanel Margin="20">
-            <TextBlock Text="Tela de pedido" FontWeight="Bold" Margin="0,0,0,10"/>
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Novo Pedido" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
 
-            <TextBlock Text="ID do Cliente:"/>
-            <TextBox x:Name="txtIdCliente" Margin="0,0,0,10"/>
+            <TextBlock Text="Lista de Pessoas:"/>
+            <ComboBox x:Name="boxPessoas" DisplayMemberPath="Nome" Margin="0,0,0,10"/>
 
-            <TextBlock Text="ID do Produto:"/>
-            <TextBox x:Name="txtIdProduto" Margin="0,0,0,10"/>
+            <TextBlock Text="Lista de Produtos:"/>
+            <ComboBox x:Name="boxProdutos" DisplayMemberPath="Nome" Margin="0,0,0,10"/>
 
             <TextBlock Text="Quantidade:"/>
             <TextBox x:Name="txtQtd" Text="1" Margin="0,0,0,10"/>
 
             <TextBlock Text="Forma de Pagamento:"/>
-            <TextBox x:Name="txtPagamento" Margin="0,0,0,20"/>
+            <ComboBox x:Name="cbPagamento" Margin="0,0,0,10">
+                <ComboBoxItem Content="Dinheiro"/>
+                <ComboBoxItem Content="Cartão"/>
+                <ComboBoxItem Content="Boleto"/>
+            </ComboBox>
 
-            <Button Content="Salvar Pedido" Click="BtnSalvar" Height="30" Margin="0,0,0,20"/>
+            <Button Content="Finalizar Pedido" Click="BtnSalvar" Height="35" FontWeight="Bold" Margin="0,10,0,20"/>
 
-            <TextBlock Text="Pedidos:" FontWeight="Bold" Margin="0,0,0,5"/>
-            <DataGrid x:Name="dgPedidos" Height="150" AutoGenerateColumns="True" IsReadOnly="True"/>
+            <TextBlock Text="Histórico de Pedidos:" FontWeight="Bold" Margin="0,0,0,5"/>
+            <DataGrid x:Name="dgPedidos" Height="200" AutoGenerateColumns="True"/>
         </StackPanel>
     </Grid>
 </Window>

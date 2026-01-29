@@ -21,62 +21,88 @@ namespace teste_tecnico_benner.Views
     /// </summary>
     public partial class CadastrarPedido : Window
     {
-        
-
         Armazenamento banco = new Armazenamento();
 
+        List<Produto> produtos;
+        List<Pessoa> clientes;
+
         public CadastrarPedido()
-        {    
+        {
             InitializeComponent();
-            AtualizarTabela(); 
+            CarregarCombos();
+            AtualizarTabela();
         }
 
-        private void AtualizarTabela()
+        private void CarregarCombos()
         {
-            var lista = banco.CarregarPedidos();
-            dgPedidos.ItemsSource = null; //dgPedidos é o nome da tabela da tela
-            dgPedidos.ItemsSource = lista; 
+            // Carregando os dados para as referencias
+            produtos = banco.CarregarProdutos();
+            clientes = banco.CarregarPessoas(); 
+
+            boxProdutos.ItemsSource = produtos;
+            boxPessoas.ItemsSource = clientes;
         }
 
         private void BtnSalvar(object sender, RoutedEventArgs e)
         {
-            Pedido p = new Pedido();
 
-            // gerar id
-            Random rd = new Random();
-            p.PessoaId = rd.Next(1, 9999);
+            int qtd = 0;
 
-            p.DataVenda = DateTime.Now; 
-            p.Status = "Pendente"; 
-            p.FormaPagamento = txtPagamento.Text;
+            // é fundamental que a pessoa e o produto estejam selecionados
+            if (boxPessoas.SelectedItem == null || boxProdutos.SelectedItem == null)
+            {
+                return;
+            }
 
-            p.Itens = new List<ItemPedido>();
 
-            ItemPedido item = new ItemPedido();
-
+            // esse trecho é importante: ela verifica se é um numero válido e guarda na variável qtd (qtd será utilizada logo abaixo)
+            // if (!int.TryParse(txtQtd.Text, out int qtd)) return;
+            // outra forma de fazer a mesma verificação:
             if (!string.IsNullOrWhiteSpace(txtQtd.Text))
             {
-                item.Quantidade = int.Parse(txtQtd.Text);
+                qtd = int.Parse(txtQtd.Text);
             }
             else
             {
                 return;
             }
-            
-            p.Itens.Add(item);
+
+            // pega informações dos combos
+            Pessoa clienteSelecionado = (Pessoa)boxPessoas.SelectedItem;
+            Produto produtoSelecionado = (Produto)boxProdutos.SelectedItem;
+
+            Pedido novoPedido = new Pedido();
+            novoPedido.Id = new Random().Next(1, 9999);
+            novoPedido.PessoaId = clienteSelecionado.Id; 
+            novoPedido.DataVenda = DateTime.Now;
+            //valor default
+            novoPedido.Status = "Pendente";
+            novoPedido.FormaPagamento = ((ComboBoxItem)cbPagamento.SelectedItem).Content.ToString();
+
+            ItemPedido item = new ItemPedido
+            {
+                Produto = produtoSelecionado, 
+                Quantidade = qtd
+            };
+
+            novoPedido.Itens.Add(item);
+
+            // esse trecho calcula o valor total do pedido
+            novoPedido.ValorTotal = (decimal)(item.Quantidade * item.Produto.Valor);
 
             var todos = banco.CarregarPedidos();
+            todos.Add(novoPedido);
+            banco.SalvarPedidos(todos);
 
-            todos.Add(p);
-            banco.SalvarPedidos(todos); 
+            MessageBox.Show("Cadastrado com sucesso!");
+            AtualizarTabela();
+        }
 
-            MessageBox.Show("Pedido feito!");
-
-            AtualizarTabela(); 
-
-            txtIdCliente.Clear();
-            txtIdProduto.Clear();
-            txtPagamento.Clear();
+        // é como se fosse um reset da tabela
+        private void AtualizarTabela()
+        {
+            dgPedidos.ItemsSource = null;
+            dgPedidos.ItemsSource = banco.CarregarPedidos();
         }
     }
 }
