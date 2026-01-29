@@ -21,10 +21,12 @@ namespace teste_tecnico_benner.Views
     /// </summary>
     public partial class CadastrarPedido : Window
     {
+        
+
         Armazenamento banco = new Armazenamento();
 
         public CadastrarPedido()
-        {
+        {    
             InitializeComponent();
             AtualizarTabela(); 
         }

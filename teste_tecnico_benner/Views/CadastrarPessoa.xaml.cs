@@ -26,6 +26,8 @@ namespace teste_tecnico_benner.Views
         Armazenamento banco = new Armazenamento();
         public CadastrarPessoa()
         {
+            //var armazenamento = new Armazenamento();
+            //armazenamento.ZerarDados();
             InitializeComponent();
             CarregarDados();
         }

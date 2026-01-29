@@ -53,5 +53,15 @@ namespace teste_tecnico_benner.Data
             string json = File.ReadAllText(caminhoPedidos);
             return JsonConvert.DeserializeObject<List<Pedido>>(json);
         }
+
+
+        //public void ZerarDados()
+        //{
+        //    SalvarPessoas(new List<Pessoa>());
+        //    SalvarProdutos(new List<Produto>());
+        //    SalvarPedidos(new List<Pedido>());
+        //}
+
+
     }
 }

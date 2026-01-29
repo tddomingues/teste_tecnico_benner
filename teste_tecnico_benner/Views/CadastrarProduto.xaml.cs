@@ -80,5 +80,24 @@ namespace teste_tecnico_benner.Views
                 MessageBox.Show("Por favor, clique num produto na tabela primeiro!");
             }
         }
+
+        private void BtnEditar(object sender, RoutedEventArgs e)
+        {
+            Produto produtoSelecionado = (Produto)dgProdutos.SelectedItem;
+          
+            produtoSelecionado.Nome = txtNomeProduto.Text;
+            produtoSelecionado.Codigo = txtCodigo.Text;
+              
+            produtoSelecionado.Valor = int.Parse(txtValor.Text); 
+
+            banco.SalvarProdutos(listaProdutos);
+           
+            txtNomeProduto.Clear();
+            txtCodigo.Clear();
+            txtValor.Clear();
+            CarregarDados();
+
+            MessageBox.Show("Produto editado!");       
+        }
     }
 }
