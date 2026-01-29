@@ -42,20 +42,30 @@ namespace teste_tecnico_benner.Views
         {
             Pedido p = new Pedido();
 
-            p.PessoaId = int.Parse(txtIdCliente.Text);
+            // gerar id
+            Random rd = new Random();
+            p.PessoaId = rd.Next(1, 9999);
+
             p.DataVenda = DateTime.Now; 
             p.Status = "Pendente"; 
             p.FormaPagamento = txtPagamento.Text;
 
             p.Itens = new List<ItemPedido>();
+
             ItemPedido item = new ItemPedido();
-            item.Quantidade = int.Parse(txtQtd.Text);
+
+            if (!string.IsNullOrWhiteSpace(txtQtd.Text))
+            {
+                item.Quantidade = int.Parse(txtQtd.Text);
+            }
+            else
+            {
+                return;
+            }
+            
             p.Itens.Add(item);
 
             var todos = banco.CarregarPedidos();
-
-            Random rd = new Random();
-            p.Id = rd.Next(1, 9999);
 
             todos.Add(p);
             banco.SalvarPedidos(todos); 

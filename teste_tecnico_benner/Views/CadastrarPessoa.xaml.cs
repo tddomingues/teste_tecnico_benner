@@ -61,7 +61,44 @@ namespace teste_tecnico_benner.Views
             txtEndereco.Clear();
             CarregarDados();
 
-            MessageBox.Show("Pessoa cadastrada com sucesso!");
+            MessageBox.Show("Cadastrado com sucesso!");
+        }
+
+        private void BtnExcluir(object sender, RoutedEventArgs e)
+        {
+            // seleciona o produto que o usuário está clicado
+            Pessoa pessoaSelecionada = (Pessoa)dgPessoas.SelectedItem;
+
+            if (pessoaSelecionada != null)
+            {
+                listaPessoas.Remove(pessoaSelecionada);
+                banco.SalvarPessoas(listaPessoas);
+                CarregarDados();
+
+                MessageBox.Show("Apagado com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Clique em um registro!");
+            }
+        }
+
+        private void BtnEditar(object sender, RoutedEventArgs e)
+        {
+            Pessoa pessoaSelecionada = (Pessoa)dgPessoas.SelectedItem;
+
+            pessoaSelecionada.Nome = txtNome.Text;
+            pessoaSelecionada.CPF = txtCPF.Text;
+            pessoaSelecionada.Endereco = txtEndereco.Text;
+
+            banco.SalvarPessoas(listaPessoas);
+
+            txtNome.Clear();
+            txtCPF.Clear();
+            txtEndereco.Clear();
+            CarregarDados();
+
+            MessageBox.Show("Edição concluida!");
         }
     }
 }

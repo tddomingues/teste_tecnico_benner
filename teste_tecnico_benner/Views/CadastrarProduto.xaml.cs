@@ -47,7 +47,14 @@ namespace teste_tecnico_benner.Views
             novo.Nome = txtNomeProduto.Text;
             novo.Codigo = txtCodigo.Text;
 
-            novo.Valor = int.Parse(txtValor.Text);
+            // txtValor.Text pode gerar crach na aplicação, por isso a validação
+            if (!string.IsNullOrWhiteSpace(txtValor.Text))
+            {
+                novo.Valor = int.Parse(txtValor.Text);
+            } else
+            {
+                return;
+            }
 
             // Adiciona na lista e manda o banco salvar o arquivo JSON
             listaProdutos.Add(novo);
@@ -59,7 +66,7 @@ namespace teste_tecnico_benner.Views
 
             CarregarDados();
 
-            MessageBox.Show("Produto Salvo com Sucesso!");
+            MessageBox.Show("Cadastrado com sucesso!");
         }
 
         private void BtnExcluir(object sender, RoutedEventArgs e)
@@ -73,11 +80,11 @@ namespace teste_tecnico_benner.Views
                 banco.SalvarProdutos(listaProdutos);
                 CarregarDados();
 
-                MessageBox.Show("Produto apagado com sucesso!");
+                MessageBox.Show("Apagado com sucesso!");
             }
             else
             {
-                MessageBox.Show("Por favor, clique num produto na tabela primeiro!");
+                MessageBox.Show("Clique em um registro!");
             }
         }
 
@@ -97,7 +104,7 @@ namespace teste_tecnico_benner.Views
             txtValor.Clear();
             CarregarDados();
 
-            MessageBox.Show("Produto editado!");       
+            MessageBox.Show("Edição concluida!");
         }
     }
 }

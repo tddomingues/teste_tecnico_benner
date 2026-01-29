@@ -20,12 +20,10 @@
             <TextBox x:Name="txtValor" Margin="0,0,5,10"/>
 
             <Button Content="Salvar" Click="BtnSalvarProduto" Height="30" Margin="0,0,0,5"/>
+            <Button Content="Excluir" Click="BtnExcluir" Height="30" Margin="0,0,0,5"/>
+            <Button Content="Editar" Click="BtnEditar" Height="30" Margin="0,0,0,5"/>
 
-            <Button Content="Excluir" Click="BtnExcluir" Height="30" Background="LightCoral" Margin="0,0,0,20"/>
-
-            <Button Content="Editar" Click="BtnEditar" Height="30" Margin="0,0,0,5" Background="LightBlue"/>
-
-            <TextBlock Text="Produtos em Estoque:" Margin="0,0,0,5"/>
+            <TextBlock Text="Produtos:" Margin="0,0,0,10"/>
             <DataGrid x:Name="dgProdutos" Height="200" AutoGenerateColumns="True" SelectionMode="Single"/>
         </StackPanel>
     </Grid>

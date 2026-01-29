@@ -19,9 +19,11 @@
             <TextBlock Text="Endereço:"/>
             <TextBox x:Name="txtEndereco" Margin="0,0,5,10"/>
 
-            <Button Content="Salvar Dados" Click="BtnSalvar" Height="30" Margin="0,0,0,20"/>
+            <Button Content="Salvar" Click="BtnSalvar" Height="30" Margin="0,0,0,5"/>
+            <Button Content="Excluir" Click="BtnExcluir" Height="30" Margin="0,0,0,5"/>
+            <Button Content="Editar" Click="BtnEditar" Height="30" Margin="0,0,0,5"/>
 
-            <TextBlock Text="Lista:" Margin="0,0,0,5"/>
+            <TextBlock Text="Lista:" Margin="0,0,0,10"/>
             <DataGrid x:Name="dgPessoas" Height="200" AutoGenerateColumns="True"/>
         </StackPanel>
     </Grid>
