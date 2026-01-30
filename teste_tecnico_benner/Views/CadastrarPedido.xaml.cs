@@ -29,11 +29,11 @@ namespace teste_tecnico_benner.Views
         public CadastrarPedido()
         {
             InitializeComponent();
-            CarregarCombos();
+            CarregarProdutoEPessoas();
             AtualizarTabela();
         }
 
-        private void CarregarCombos()
+        private void CarregarProdutoEPessoas()
         {
             // Carregando os dados para as referencias
             produtos = banco.CarregarProdutos();
@@ -53,7 +53,6 @@ namespace teste_tecnico_benner.Views
             {
                 return;
             }
-
 
             // esse trecho é importante: ela verifica se é um numero válido e guarda na variável qtd (qtd será utilizada logo abaixo)
             // if (!int.TryParse(txtQtd.Text, out int qtd)) return;
@@ -77,6 +76,7 @@ namespace teste_tecnico_benner.Views
             novoPedido.DataVenda = DateTime.Now;
             //valor default
             novoPedido.Status = "Pendente";
+            //esse trecho pega o conteudo da caixa selecionada pelo usuário
             novoPedido.FormaPagamento = ((ComboBoxItem)cbPagamento.SelectedItem).Content.ToString();
 
             ItemPedido item = new ItemPedido
