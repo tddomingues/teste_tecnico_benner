@@ -24,6 +24,12 @@ namespace teste_tecnico_benner.Data
 
         public List<Pessoa> CarregarPessoas()
         {
+
+            if (!File.Exists(caminhoPessoas))
+            {
+                return new List<Pessoa>(); // Agora funciona!
+            }
+
             string json = File.ReadAllText(caminhoPessoas); //lê o arquivo do caminho exigido e joga na variável
             return JsonConvert.DeserializeObject<List<Pessoa>>(json); //transforma o json em objeto
         }
@@ -37,6 +43,12 @@ namespace teste_tecnico_benner.Data
 
         public List<Produto> CarregarProdutos()
         {
+
+            if (!File.Exists(caminhoProdutos))
+            {
+                return new List<Produto>(); // Agora funciona!
+            }
+
             string json = File.ReadAllText(caminhoProdutos);
             return JsonConvert.DeserializeObject<List<Produto>>(json);
         }
@@ -46,10 +58,16 @@ namespace teste_tecnico_benner.Data
         {
             string json = JsonConvert.SerializeObject(lista, Formatting.Indented);
             File.WriteAllText(caminhoPedidos, json);
-        }     
+        }
 
         public List<Pedido> CarregarPedidos()
         {
+
+            if (!File.Exists(caminhoPedidos))
+            {
+                return new List<Pedido>(); // Agora funciona!
+            }
+
             string json = File.ReadAllText(caminhoPedidos);
             return JsonConvert.DeserializeObject<List<Pedido>>(json);
         }
